@@ -1,0 +1,38 @@
+<!--index.wxml-->
+<!--<view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+</view>-->
+<!-- 初始页面 -->
+  <view class='splash-view' wx:if="{{!imgFile.path}}">
+    <import src="desc_item.wxml" />
+    <view animation="{{animDESC}}" style="opacity:{{animScope.DESC ? 0 : 1 }}">
+      <block wx:key='' wx:for="{{DESC}}">
+        <template is="desc_item" data="{{...item}}" />
+      </block>
+    </view>
+
+    <image animation="{{animObtainImgStart}}" class="obtain-img-start" src='./ic_pic.png' bindtap="chooseImage"></image>
+  </view>
+<!-- 获取图片 -->
+  <view animation="{{animObtainImg}}" style="opacity:{{animScope.obtainImgInit ? 0 : 1 }}" class="obtain-img-container" wx:if="{{imgFile.path}}">
+    <view class="obtain-img-button" bindtap="chooseImage">
+      <text class="obtain-img-button-text">选择图片 / 拍照</text>
+    </view>
+    <view class="obtain-img-txt">
+      <text class="obtain-img-txt-title">原厂人参图片</text>
+    </view>
+    <view class="img-container">
+     <!-- <image class="image" src="{{imgFile.path}}" mode="aspectFit" bindtap="previewImg"></image>-->
+    <image class="image" src="https://s1.ax1x.com/2018/06/22/Pp3njs.jpg" mode="aspectFill">  
+    </image>
+  </view>
+  </view>
